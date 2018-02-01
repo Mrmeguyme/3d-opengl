@@ -1,0 +1,12 @@
+Using JSON to store map data.
+R = Entity Type
+G = Flags
+ - Solid?
+B = Information about the Object
+ - health
+A = 
+
+
+{
+	"1": 
+}
