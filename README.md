@@ -1,2 +1,2 @@
 # 3d-opengl
-A Program made in Java using LWJGL and Slick-Util. This is a Netbeans project.
+A Program made in Java using LWJGL 2 and Slick-Util. This is a Netbeans project.
