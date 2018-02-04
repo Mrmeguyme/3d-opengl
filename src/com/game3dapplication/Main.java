@@ -1,22 +1,28 @@
 package com.game3dapplication;
 
+import com.game3dapplication.util.BoundsBox;
+import static org.lwjgl.opengl.GL11.*;
+
+import com.game3dapplication.item.*;
+
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+
 import org.lwjgl.LWJGLException;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
-import static org.lwjgl.opengl.GL11.*;
+import org.lwjgl.Sys;
 
 
 /**
  *
- * @author Josh
+ * @author Mrmeguyme
  */
 public class Main
 {    
@@ -28,12 +34,11 @@ public class Main
         cleanUp();
     }
     
-    @SuppressWarnings("UnusedAssignment")
     public static void gameLoop()
     {
         float speed;
         
-        File f = new File("res/joshgameworld.png");
+        File f = new File("res/level/joshgameworld.png");
         BufferedImage img = null;
         try {
             img = ImageIO.read(f);
@@ -47,6 +52,8 @@ public class Main
         cam.move(myLevel.getCamZ() * -2, 1);
         cam.move(myLevel.getCamX() * -2, 0);
         cam.useView();
+        
+        Inventory inv = new Inventory();
         
         boolean justMoved = false;
         boolean crouching = false;
@@ -66,11 +73,7 @@ public class Main
         
         //Game Running
         while (!Display.isCloseRequested())
-        {
-            float playerX = cam.getX();
-            float playerY = cam.getY();
-            float playerZ = cam.getZ();
-            
+        {            
             boolean isJumping2 = isJumping;
             boolean forward = Keyboard.isKeyDown(Keyboard.KEY_W) || Keyboard.isKeyDown(Keyboard.KEY_UP);
             boolean backward = Keyboard.isKeyDown(Keyboard.KEY_S) || Keyboard.isKeyDown(Keyboard.KEY_DOWN);
@@ -125,9 +128,9 @@ public class Main
             
             if (jumping) {
                 countJump++;
-                if (countJump >= 5)
+                if (countJump >= 3)
                     cam.endJump();
-                if (countJump >= 15) {
+                if (countJump >= 7) {
                     countJump = 0;
                     jumping = false;
                 }
@@ -231,7 +234,7 @@ public class Main
         {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+        System.out.println("Using LWJGL Version: " + Sys.getVersion());
     }
 
     private static void initMouse() {

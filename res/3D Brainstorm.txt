@@ -1,12 +1,9 @@
-Using JSON to store map data.
-R = Entity Type
-G = Flags
- - Solid?
-B = Information about the Object
- - health
-A = 
-
-
-{
-	"1": 
-}
+To Do List:
+	- Pause Menu
+	- HUD
+	- Sounds
+	 - Music
+	 - Weapons
+	- Doors
+	- People to talk to
+	- Grass
