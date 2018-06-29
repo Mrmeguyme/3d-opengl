@@ -5,7 +5,7 @@ import static org.lwjgl.util.glu.GLU.*;
 
 /**
  *
- * @author Mrmeguyme
+ * @author Josh
  */
 public class Camera
 {
@@ -155,6 +155,6 @@ public class Camera
     
     public void endJump()
     {
-        this.y += 0.4f;
+        this.y += 0.15f;
     }
 }

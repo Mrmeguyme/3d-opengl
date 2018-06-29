@@ -1,6 +1,5 @@
 package com.game3dapplication;
 
-import com.game3dapplication.util.BoundsBox;
 import static org.lwjgl.opengl.GL11.GL_QUADS;
 import static org.lwjgl.opengl.GL11.glBegin;
 import static org.lwjgl.opengl.GL11.glEnd;
@@ -12,7 +11,7 @@ import static org.lwjgl.opengl.GL11.glVertex3f;
 
 /**
  *
- * @author Mrmeguyme
+ * @author Josh
  */
 public class Draw
 {
@@ -79,13 +78,13 @@ public class Draw
                         glTexCoord2f(1, 1); glVertex3f(1, 1, -1);
                         glTexCoord2f(1, 0); glVertex3f(1, -1, -1);
 
-                        //Bottom Face
+                        //Bottom Face - Checked
                         glTexCoord2f(1, 1); glVertex3f(-1, -1, -1);
                         glTexCoord2f(0, 1); glVertex3f(-1, -1, 1);
                         glTexCoord2f(0, 0); glVertex3f(-1, 1, 1);
                         glTexCoord2f(1, 0); glVertex3f(-1, 1, -1);
 
-                        //Right Face
+                        //Top Face - Checked
                         glTexCoord2f(1, 1); glVertex3f(1, -1, -1);
                         glTexCoord2f(0, 1); glVertex3f(1, -1, 1);
                         glTexCoord2f(0, 0); glVertex3f(1, 1, 1);
@@ -97,67 +96,11 @@ public class Draw
                         glTexCoord2f(1, 1); glVertex3f(-1, -1, 1);
                         glTexCoord2f(1, 0); glVertex3f(1, -1, 1);
 
-                        //Top Face
+                        //Right Face
                         glTexCoord2f(1, 0); glVertex3f(-1, 1, 1);
                         glTexCoord2f(1, 1); glVertex3f(1, 1, 1);
-                        glTexCoord2f(0, 1); glVertex3f(1, 1, -1);
-                        glTexCoord2f(0, 0); glVertex3f(-1, 1, -1);
-                        
-                    }
-                glEnd();
-            }
-            glPopMatrix();
-        }
-        return new BoundsBox(x, y, z, 1, type);
-    }
-    
-    public static BoundsBox roofing(float x, float y, float z, float playerX, float playerY, float playerZ, String type)
-    {
-        float totalDistance = checkDistance(x, y, z, playerX, playerY, playerZ);
-        
-        if (totalDistance < 100) {
-            glPushMatrix();
-            {
-                glTranslatef(x, y, z);
-                glBegin(GL_QUADS);
-                    {
-
-
-                        //Front Face
-                        glTexCoord2f(0, 1); glVertex3f(1, 0.5f, 1);
-                        glTexCoord2f(0, 0); glVertex3f(1, -1, 1);
-                        glTexCoord2f(1, 0); glVertex3f(-1, -1, 1);
-                        glTexCoord2f(1, 1); glVertex3f(-1, 0.5f, 1);
-
-                        //Back Face
-                        glTexCoord2f(0, 0); glVertex3f(-1, -1, -1);
-                        glTexCoord2f(0, 1); glVertex3f(-1, 0.5f, -1);
-                        glTexCoord2f(1, 1); glVertex3f(1, 0.5f, -1);
-                        glTexCoord2f(1, 0); glVertex3f(1, -1, -1);
-
-                        //Left Face
-                        glTexCoord2f(1, 1); glVertex3f(-1, -1, -1);
-                        glTexCoord2f(0, 1); glVertex3f(-1, -1, 1);
-                        glTexCoord2f(0, 0); glVertex3f(-1, 0.5f, 1);
-                        glTexCoord2f(1, 0); glVertex3f(-1, 0.5f, -1);
-
-                        //Right Face
-                        glTexCoord2f(1, 1); glVertex3f(1, -1, -1);
-                        glTexCoord2f(0, 1); glVertex3f(1, -1, 1);
-                        glTexCoord2f(0, 0); glVertex3f(1, 0.5f, 1);
-                        glTexCoord2f(1, 0); glVertex3f(1, 0.5f, -1);
-
-                        //Bottom Face
-                        glTexCoord2f(0, 0); glVertex3f(1, -1, -1);
-                        glTexCoord2f(0, 1); glVertex3f(-1, -1, -1);
-                        glTexCoord2f(1, 1); glVertex3f(-1, -1, 1);
-                        glTexCoord2f(1, 0); glVertex3f(1, -1, 1);
-
-                        //Top Face
-                        glTexCoord2f(1, 0); glVertex3f(-1, 0.5f, 1);
-                        glTexCoord2f(1, 1); glVertex3f(1, 0.5f, 1);
-                        glTexCoord2f(0, 1); glVertex3f(1, 0.5f, -1);
-                        glTexCoord2f(0, 0); glVertex3f(-1, 0.5f, -1);
+                        glTexCoord2f(0, 0); glVertex3f(1, 1, -1);
+                        glTexCoord2f(0, 1); glVertex3f(-1, 1, -1);
                         
                     }
                 glEnd();

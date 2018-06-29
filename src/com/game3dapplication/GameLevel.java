@@ -1,7 +1,5 @@
 package com.game3dapplication;
 
-import com.game3dapplication.util.BoundsBox;
-import com.game3dapplication.util.FastRGB;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -14,7 +12,7 @@ import org.newdawn.slick.opengl.TextureLoader;
 
 /**
  *
- * @author Mrmeguyme
+ * @author Josh
  */
 public class GameLevel {
     private static BufferedImage mapFile;
@@ -30,7 +28,6 @@ public class GameLevel {
     private static Texture wood;
     private static Texture leaves;
     private static Texture water;
-    private static Texture planks;
     
     public GameLevel(BufferedImage mapFile, String jsonFileName)
     {
@@ -61,13 +58,12 @@ public class GameLevel {
         wood = loadTexture("wood");
         leaves = loadTexture("leaves");
         water = loadTexture("water");
-        planks = loadTexture("planks");
     }
     
     private static Texture loadTexture(String key)
     {
         try {
-            return TextureLoader.getTexture("png", new FileInputStream(new File("res/texture-lowrez/" + key + ".png")));
+            return TextureLoader.getTexture("png", new FileInputStream(new File("res/" + key + ".png")));
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -110,8 +106,7 @@ public class GameLevel {
                         }
                         case 254: {
                             stoneWall.bind();
-                            int height = 4;
-                            for (int k = -4; k < height; k+= 2) {
+                            for (int k = -4; k < 2; k+= 2) {
                                 box = Draw.cube(j*2, k, i*2, -camX, 0, -camZ, "stoneWall");
                                 collisionObj.addBox(box);
                             }
@@ -147,16 +142,6 @@ public class GameLevel {
                         case 251: {
                             water.bind();
                             box = Draw.cube(j*2, -4, i*2, -camX, 0, -camZ, "water");
-                            collisionObj.addBox(box);
-                            break;
-                        }
-                        case 250: {
-                            planks.bind();
-                            //Floor
-                            box = Draw.cube(j*2, -4, i*2, -camX, 0, -camZ, "planks");
-                            collisionObj.addBox(box);
-                            //Roof
-                            box = Draw.roofing(j*2, 4, i*2, -camX, 0, -camZ, "roof");
                             collisionObj.addBox(box);
                             break;
                         }

@@ -1,11 +1,10 @@
 package com.game3dapplication;
 
-import com.game3dapplication.util.BoundsBox;
 import java.util.ArrayList;
 
 /**
  *
- * @author Mrmeguyme
+ * @author Josh
  */
 public class Collision
 {
