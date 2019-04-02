@@ -16,4 +16,4 @@ A Program made in Java using LWJGL 2 and Slick-Util. This is a Netbeans project.
 * collision
 * HUD
 
-This is what I was able to code by March 2018.
+This is what I was able to code by March 2018 (roughly a 3 and a half month period).
